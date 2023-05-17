@@ -21,7 +21,7 @@ export class ResetpasswordComponent implements OnInit {
   message :string = ""
 
   constructor(private movieService:MovieService) {
-    this.loginId = localStorage.getItem('loginId');
+    this.loginId = sessionStorage.getItem('loginId');
   }
 
   updatePassword(){
@@ -38,7 +38,7 @@ export class ResetpasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('loginStatus') === 'guest') {
+    if(sessionStorage.getItem('loginStatus') === 'guest') {
       this.loggedInAsGuest = true;
     }
   }

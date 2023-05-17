@@ -36,7 +36,7 @@ export class AllmoviesComponent implements OnInit {
     }
   }
   isLoggedAsUser(){
-    if(localStorage.getItem('loginStatus') === 'user'){
+    if(sessionStorage.getItem('loginStatus') === 'user'){
       return true;
     }
     else{
@@ -55,7 +55,7 @@ export class AllmoviesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('loginStatus') === 'guest') {
+    if(sessionStorage.getItem('loginStatus') === 'guest') {
       this.loggedInAsGuest = true;
     }
   }

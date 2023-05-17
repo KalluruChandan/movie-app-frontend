@@ -37,17 +37,17 @@ export class LoginComponent implements OnInit {
     // handle login form submission here
     this.loginRequest.loginId = this.loginId;
     this.loginRequest.password = this.password;
-    localStorage.setItem('loginId', this.loginId);
+    sessionStorage.setItem('loginId', this.loginId);
     this.movieService.login(this.loginRequest).subscribe(
       (response)=>{
-        localStorage.setItem('token',response.accessToken);
+        sessionStorage.setItem('token',response.accessToken);
         console.log(response)
         if(response.roles[0] === 'ROLE_USER'){
-          localStorage.setItem('loginStatus', 'user')
+          sessionStorage.setItem('loginStatus', 'user')
           this.userStatus = 'user'
         }
         else if(response.roles[0] === 'ROLE_ADMIN'){
-          localStorage.setItem('loginStatus', 'admin')
+          sessionStorage.setItem('loginStatus', 'admin')
           this.userStatus = 'admin'
         }
         this.router.navigate(['/home']);
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
   onLoginAsGuest() {
     // handle login as guest here
     this.userStatus = 'guest'
-    localStorage.setItem('loginStatus', 'guest');
+    sessionStorage.setItem('loginStatus', 'guest');
     this.router.navigate(['/home']);
   }
 

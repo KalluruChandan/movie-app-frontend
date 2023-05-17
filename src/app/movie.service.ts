@@ -60,7 +60,7 @@ export class MovieService {
     return this.httpClient.post<Message>(
       this.urlForBookingAMovie + ticket.movieName + '/add',
       ticket,
-      { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }
+      { headers: { Authorization: 'Bearer ' + sessionStorage.getItem('token') } }
     );
   }
 
@@ -68,7 +68,7 @@ export class MovieService {
     return this.httpClient.put<Message>(
       this.urlForPasswordReset + updatedLoginRequest.loginId + '/forgot',
       updatedLoginRequest,
-      { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }
+      { headers: { Authorization: 'Bearer ' + sessionStorage.getItem('token') } }
     );
   }
 
@@ -79,21 +79,21 @@ export class MovieService {
         '/update/' +
         updatedMovie.ticketsStatus,
       updatedMovie,
-      { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }
+      { headers: { Authorization: 'Bearer ' + sessionStorage.getItem('token') } }
     );
   }
 
   forDeletingAMovie(movieName: string): Observable<Message> {
     return this.httpClient.delete<Message>(
       this.urlForDeletingAMovie + movieName + '/delete',
-      { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }
+      { headers: { Authorization: 'Bearer ' + sessionStorage.getItem('token') } }
     );
   }
 
   forGettingAllBookedTickets(movieName: string): Observable<Ticket[]> {
     return this.httpClient.get<Ticket[]>(
       this.urlForAllTicketsBooked + movieName,
-      { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }
+      { headers: { Authorization: 'Bearer ' + sessionStorage.getItem('token') } }
     );
   }
 
@@ -122,12 +122,12 @@ export class MovieService {
   }
 
   public isAuthenticated(): boolean {
-    // const token = JSON.stringify(localStorage.getItem('token'));
+    // const token = JSON.stringify(sessionStorage.getItem('token'));
     // // Check whether the token is expired and return
     // // true or false
     // return !this.jwtHelper.isTokenExpired(token);
     return (
-      !!localStorage.getItem('token') || !!localStorage.getItem('loginStatus')
+      !!sessionStorage.getItem('token') || !!sessionStorage.getItem('loginStatus')
     );
   }
 

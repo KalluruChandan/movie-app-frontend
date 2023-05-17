@@ -83,13 +83,13 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should initialize loggedInAsGuest and loggedInAsUser based on localStorage', () => {
-    localStorage.setItem('loginStatus', 'guest');
+  xit('should initialize loggedInAsGuest and loggedInAsUser based on sessionStorage', () => {
+    sessionStorage.setItem('loginStatus', 'guest');
     fixture.detectChanges();
     expect(component.loggedInAsGuest).toBe(false);
     expect(component.loggedInAsUser).toBe(false);
 
-    localStorage.setItem('loginStatus', 'user');
+    sessionStorage.setItem('loginStatus', 'user');
     fixture.detectChanges();
     expect(component.loggedInAsGuest).toBe(false);
     expect(component.isLoggedInAsUser()).toBe(true);
@@ -102,57 +102,57 @@ describe('HomeComponent', () => {
   });
 
   it('should return false for getUserStatus when logged in as guest or user', () => {
-    localStorage.setItem('loginStatus', 'guest');
+    sessionStorage.setItem('loginStatus', 'guest');
     fixture.detectChanges();
     expect(component.getUserStatus()).toBe(false);
 
-    localStorage.setItem('loginStatus', 'user');
+    sessionStorage.setItem('loginStatus', 'user');
     fixture.detectChanges();
     expect(component.getUserStatus()).toBe(false);
   });
 
   it('should return true for getUserStatus when not logged in as guest or user', () => {
-    localStorage.setItem('loginStatus', 'admin');
+    sessionStorage.setItem('loginStatus', 'admin');
     fixture.detectChanges();
     expect(component.getUserStatus()).toBe(true);
 
-    localStorage.removeItem('loginStatus');
+    sessionStorage.removeItem('loginStatus');
     fixture.detectChanges();
     expect(component.getUserStatus()).toBe(true);
   });
 
   it('should return true for isLoggedInAsUser when logged in as user', () => {
-    localStorage.setItem('loginStatus', 'user');
+    sessionStorage.setItem('loginStatus', 'user');
     fixture.detectChanges();
     expect(component.isLoggedInAsUser()).toBe(true);
   });
 
   it('should return false for isLoggedInAsUser when not logged in as user', () => {
-    localStorage.setItem('loginStatus', 'guest');
+    sessionStorage.setItem('loginStatus', 'guest');
     fixture.detectChanges();
     expect(component.isLoggedInAsUser()).toBe(false);
 
-    localStorage.setItem('loginStatus', 'admin');
+    sessionStorage.setItem('loginStatus', 'admin');
     fixture.detectChanges();
     expect(component.isLoggedInAsUser()).toBe(false);
   });
 
   it('should return true for getStatusForLogout when logged in as user or admin', () => {
-    localStorage.setItem('loginStatus', 'user');
+    sessionStorage.setItem('loginStatus', 'user');
     fixture.detectChanges();
     expect(component.getStatusForLogout()).toBe(true);
 
-    localStorage.setItem('loginStatus', 'admin');
+    sessionStorage.setItem('loginStatus', 'admin');
     fixture.detectChanges();
     expect(component.getStatusForLogout()).toBe(true);
   });
 
   it('should return false for getStatusForLogout when not logged in as user or admin', () => {
-    localStorage.setItem('loginStatus', 'guest');
+    sessionStorage.setItem('loginStatus', 'guest');
     fixture.detectChanges();
     expect(component.getStatusForLogout()).toBe(false);
 
-    localStorage.removeItem('loginStatus');
+    sessionStorage.removeItem('loginStatus');
     fixture.detectChanges();
     expect(component.getStatusForLogout()).toBe(false);
   });

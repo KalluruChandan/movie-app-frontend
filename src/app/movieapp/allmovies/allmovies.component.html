@@ -67,10 +67,10 @@
 </div> -->
 <div class="container-lg">
   <div class="row movie-div my-div" *ngFor="let movie of movieList">
-    <div class="col-xxl-2">
-      <img src="{{getMovieImagePath(movie.movieName)}}" alt="movie.movieName">
-    </div>
     <div class="col-xxl-3">
+      <img src="{{getMovieImagePath(movie.movieName)}}" style="padding-left: 35% ;" alt="movie.movieName">
+    </div>
+    <div class="col-xxl-6">
           <h1 class="movie-details">
             <img src="../../../assets/images/movies/movie-icon.png" alt="movie icon">
             {{movie.movieName}}</h1> <br>

@@ -22,12 +22,12 @@ export class HomeComponent implements OnInit {
   }
   
   loginForGuest(){
-    localStorage.removeItem('loginStatus');
+    sessionStorage.removeItem('loginStatus');
     this.router.navigate(['/register']);
   }
 
   getUserStatus(){
-    if(localStorage.getItem('loginStatus') === 'guest' || localStorage.getItem('loginStatus') === 'user'){
+    if(sessionStorage.getItem('loginStatus') === 'guest' || sessionStorage.getItem('loginStatus') === 'user'){
       return false;
     }
     else {
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   }
 
   isLoggedInAsUser(){
-    if(localStorage.getItem('loginStatus') === 'user'){
+    if(sessionStorage.getItem('loginStatus') === 'user'){
       return true;
     } 
     else{
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
   }
 
   getStatusForLogout(){
-    if(localStorage.getItem('loginStatus') === 'user' || localStorage.getItem('loginStatus') === 'admin'){
+    if(sessionStorage.getItem('loginStatus') === 'user' || sessionStorage.getItem('loginStatus') === 'admin'){
       return true;
     }
     else {
@@ -54,9 +54,9 @@ export class HomeComponent implements OnInit {
   }
 
   logout(){
-    localStorage.removeItem('loginStatus');
-    localStorage.removeItem('token');
-    localStorage.removeItem('loginId');
+    sessionStorage.removeItem('loginStatus');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('loginId');
     this.router.navigate(['/login']);
   }
 
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
   // }
 
   // isLoggedAsUser(){
-  //   if(localStorage.getItem('loginStatus') === 'user'){
+  //   if(sessionStorage.getItem('loginStatus') === 'user'){
   //     return true;
   //   }
   //   else{
@@ -98,10 +98,10 @@ export class HomeComponent implements OnInit {
   // }
   
   ngOnInit(): void {
-    if(localStorage.getItem('loginStatus') === 'guest') {
+    if(sessionStorage.getItem('loginStatus') === 'guest') {
       this.loggedInAsGuest = true;
     }
-    else if(localStorage.getItem('loginStatus') === 'user'){
+    else if(sessionStorage.getItem('loginStatus') === 'user'){
       this.loggedInAsUser = true;
     }
   }

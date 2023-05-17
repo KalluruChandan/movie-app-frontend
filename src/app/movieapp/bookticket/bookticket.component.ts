@@ -101,13 +101,13 @@ export class BookticketComponent implements OnInit {
 
   ngOnInit(): void {
     this.booking.loginId =
-      this.booking.loginId + localStorage.getItem('loginId');
-    console.log(localStorage.getItem('loginStatus'));
-    if (localStorage.getItem('loginStatus') === 'guest') {
+      this.booking.loginId + sessionStorage.getItem('loginId');
+    console.log(sessionStorage.getItem('loginStatus'));
+    if (sessionStorage.getItem('loginStatus') === 'guest') {
       this.loggedInAsGuest = true;
-    } else if (localStorage.getItem('loginStatus') === 'admin') {
+    } else if (sessionStorage.getItem('loginStatus') === 'admin') {
       this.loggedInAsAdmin = true;
-    } else if (localStorage.getItem('loginStatus') === 'user') {
+    } else if (sessionStorage.getItem('loginStatus') === 'user') {
       this.loggedInAsUser = true;
     }
     this.rows = [

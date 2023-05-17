@@ -55,7 +55,7 @@ export class SearchmovieComponent implements OnInit {
   }
 
   isLoggedAsUser(){
-    if(localStorage.getItem('loginStatus') === 'user'){
+    if(sessionStorage.getItem('loginStatus') === 'user'){
       return true;
     }
     else{

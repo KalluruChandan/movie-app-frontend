@@ -89,10 +89,10 @@ xdescribe('AllmoviesComponent', () => {
   });
 
   it('should check if logged in as a user', () => {
-    localStorage.setItem('loginStatus', 'user');
+    sessionStorage.setItem('loginStatus', 'user');
     expect(component.isLoggedAsUser()).toBe(true);
 
-    localStorage.setItem('loginStatus', 'guest');
+    sessionStorage.setItem('loginStatus', 'guest');
     expect(component.isLoggedAsUser()).toBe(false);
   });
 
@@ -109,7 +109,7 @@ xdescribe('AllmoviesComponent', () => {
   });
 
   it('should set the logged in as guest flag if login status is guest', () => {
-    localStorage.setItem('loginStatus', 'guest');
+    sessionStorage.setItem('loginStatus', 'guest');
     fixture.detectChanges();
 
     expect(component.loggedInAsGuest).toBe(true);
