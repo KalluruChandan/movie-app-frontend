@@ -80,21 +80,6 @@ export class BookticketComponent implements OnInit {
     }
   }
 
-  toggleSeatSelection(seat: Seat) {
-    seat.selected = !seat.selected;
-
-    if (seat.selected) {
-      this.selectedSeats.push(seat);
-    } else {
-      const index = this.selectedSeats.findIndex(
-        (s) => s.number === seat.number
-      );
-      if (index > -1) {
-        this.selectedSeats.splice(index, 1);
-      }
-    }
-  }
-
   checkForDuplicates(array: string[]): boolean {
     return new Set(array).size !== array.length;
   }
@@ -110,28 +95,5 @@ export class BookticketComponent implements OnInit {
     } else if (sessionStorage.getItem('loginStatus') === 'user') {
       this.loggedInAsUser = true;
     }
-    this.rows = [
-      {
-        seats: [
-          { number: 'A1', selected: false },
-          { number: 'A2', selected: false },
-          { number: 'A3', selected: false },
-        ],
-      },
-      {
-        seats: [
-          { number: 'B1', selected: false },
-          { number: 'B2', selected: false },
-          { number: 'B3', selected: false },
-        ],
-      },
-      {
-        seats: [
-          { number: 'C1', selected: false },
-          { number: 'C2', selected: false },
-          { number: 'C3', selected: false },
-        ],
-      },
-    ];
   }
 }

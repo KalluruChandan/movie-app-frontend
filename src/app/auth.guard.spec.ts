@@ -3,9 +3,10 @@ import { MovieService } from './movie.service';
 import { Router } from '@angular/router';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 
-xdescribe('AuthGuard', () => {
+describe('AuthGuard', () => {
   let guard: AuthGuard;
   let movieService: MovieService;
   let router: Router;
@@ -13,7 +14,7 @@ xdescribe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      providers: [AuthGuard, MovieService]
+      providers: [AuthGuard, MovieService,HttpClient,HttpHandler]
     });
     guard = TestBed.inject(AuthGuard);
     movieService = TestBed.inject(MovieService);

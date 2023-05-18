@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieService } from './movie.service';
-import { PracticeComponent } from './movieapp/practice/practice.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './movieapp/login/login.component';
@@ -22,7 +21,6 @@ import { SearchmovieComponent } from './movieapp/searchmovie/searchmovie.compone
 @NgModule({
   declarations: [
     AppComponent,
-    PracticeComponent,
     LoginComponent,
     HomeComponent,
     RegisterComponent,

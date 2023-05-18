@@ -7,37 +7,20 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import { AppComponent } from 'src/app/app.component';
-import { AllmoviesComponent } from '../allmovies/allmovies.component';
-import { BookingsComponent } from '../bookings/bookings.component';
-import { BookticketComponent } from '../bookticket/bookticket.component';
-import { DeletemovieComponent } from '../deletemovie/deletemovie.component';
-import { HomeComponent } from '../home/home.component';
-import { PracticeComponent } from '../practice/practice.component';
-import { RegisterComponent } from '../register/register.component';
-import { ResetpasswordComponent } from '../resetpassword/resetpassword.component';
-import { SearchmovieComponent } from '../searchmovie/searchmovie.component';
-import { UpdatestatusComponent } from '../updatestatus/updatestatus.component';
+import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let router: Router;
+  let movieService: MovieService;
+
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
-        PracticeComponent,
-        LoginComponent,
-        HomeComponent,
-        RegisterComponent,
-        BookingsComponent,
-        BookticketComponent,
-        AllmoviesComponent,
-        ResetpasswordComponent,
-        DeletemovieComponent,
-        UpdatestatusComponent,
-        SearchmovieComponent
+        LoginComponent
       ],
       imports: [
         BrowserModule,
@@ -46,11 +29,11 @@ describe('LoginComponent', () => {
         FormsModule,
         HttpClientModule
       ],
-      providers:[MovieService,HttpClient,HttpHandler,RouterTestingModule]
-
+      providers: [{ provide: Router, useClass: class { navigate = jasmine.createSpy('navigate'); } }]
     })
     .compileComponents();
-
+    router = TestBed.inject(Router);
+    movieService = TestBed.inject(MovieService);
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -58,5 +41,17 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should navigate to the registration page', () => {
+    component.onRegister();
+    expect(router.navigate).toHaveBeenCalledWith(['/register']);
+  });
+
+  it('should login as guest and navigate to the home page', () => {
+    component.onLoginAsGuest();
+    expect(component.userStatus).toBe('guest');
+    expect(sessionStorage.getItem('loginStatus')).toBe('guest');
+    expect(router.navigate).toHaveBeenCalledWith(['/home']);
   });
 });

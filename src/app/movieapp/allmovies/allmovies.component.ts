@@ -21,6 +21,7 @@ export class AllmoviesComponent implements OnInit {
       (response)=>{
         console.log(response);
         this.movieList = response;
+        console.log(this.movieList);
       }
     )   
   }
@@ -61,3 +62,4 @@ export class AllmoviesComponent implements OnInit {
   }
 
 }
+

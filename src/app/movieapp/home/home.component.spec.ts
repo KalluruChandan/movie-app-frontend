@@ -30,17 +30,6 @@ import { MovieService } from 'src/app/movie.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import { AppComponent } from 'src/app/app.component';
-import { AllmoviesComponent } from '../allmovies/allmovies.component';
-import { BookingsComponent } from '../bookings/bookings.component';
-import { BookticketComponent } from '../bookticket/bookticket.component';
-import { DeletemovieComponent } from '../deletemovie/deletemovie.component';
-import { LoginComponent } from '../login/login.component';
-import { PracticeComponent } from '../practice/practice.component';
-import { RegisterComponent } from '../register/register.component';
-import { ResetpasswordComponent } from '../resetpassword/resetpassword.component';
-import { SearchmovieComponent } from '../searchmovie/searchmovie.component';
-import { UpdatestatusComponent } from '../updatestatus/updatestatus.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -49,18 +38,7 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
-        PracticeComponent,
-        LoginComponent,
-        HomeComponent,
-        RegisterComponent,
-        BookingsComponent,
-        BookticketComponent,
-        AllmoviesComponent,
-        ResetpasswordComponent,
-        DeletemovieComponent,
-        UpdatestatusComponent,
-        SearchmovieComponent
+        HomeComponent
       ],
       imports: [
         BrowserModule,

@@ -50,6 +50,7 @@ export class SearchmovieComponent implements OnInit {
       case 'Bhoola': return '../../../assets/images/movies/Bhoola.jpg';
       case 'Vidudhala': return '../../../assets/images/movies/Vidudhala.jpg';
       case 'Pathaan': return '../../../assets/images/movies/Pathaan.jpg';
+      case 'Pushpa': return '../../../assets/images/movies/Pushpa.jpg';
       default: return '';
     }
   }
