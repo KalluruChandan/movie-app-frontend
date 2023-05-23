@@ -54,4 +54,5 @@ describe('LoginComponent', () => {
     expect(sessionStorage.getItem('loginStatus')).toBe('guest');
     expect(router.navigate).toHaveBeenCalledWith(['/home']);
   });
+  
 });

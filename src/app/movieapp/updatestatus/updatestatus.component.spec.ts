@@ -4,9 +4,6 @@ import { HttpClient,HttpClientModule,HttpHandler } from '@angular/common/http';
 import { MovieService } from 'src/app/movie.service';
 import { of } from 'rxjs';
 import { FormsModule } from '@angular/forms';
-// import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-// import { BrowserModule } from '@angular/platform-browser';
-// import { AppRoutingModule } from 'src/app/app-routing.module';
 
 describe('UpdatestatusComponent', () => {
   let component: UpdatestatusComponent;

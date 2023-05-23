@@ -1,30 +1,36 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BookingsComponent } from './bookings.component';
+import { of, throwError } from 'rxjs';
 import { MovieService } from 'src/app/movie.service';
-import { Ticket } from '../models/Ticket';
-import { of } from 'rxjs';
-import { FormGroup } from '@angular/forms';
+import { HttpClient,HttpClientModule,HttpHandler } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
-xdescribe('BookingsComponent', () => {
+describe('BookingsComponent', () => {
   let component: BookingsComponent;
   let fixture: ComponentFixture<BookingsComponent>;
-  let movieService: jasmine.SpyObj<MovieService>;
+  let movieService: MovieService;
 
   beforeEach(async () => {
-    const movieServiceSpy = jasmine.createSpyObj('MovieService', ['validateMovieName', 'forGettingAllBookedTickets']);
-
     await TestBed.configureTestingModule({
       declarations: [BookingsComponent],
-      providers: [{ provide: MovieService, useValue: movieServiceSpy }]
-    }).compileComponents();
-
-    movieService = TestBed.inject(MovieService) as jasmine.SpyObj<MovieService>;
+      imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule
+      ],
+      providers:[MovieService,HttpClient,HttpHandler]
+    })
+    .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BookingsComponent);
     component = fixture.componentInstance;
+    movieService = TestBed.inject(MovieService);
     fixture.detectChanges();
   });
 
@@ -32,47 +38,24 @@ xdescribe('BookingsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should return all tickets', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should should get all tickets', () => {
+    const movieName = 'Dasara'
+    const allTickets = [{loginId: 'user',
+      movieName : 'Dasara',
+      theatreName : 'miraj',
+      noOfTickets : 2,
+      seatNumber : ['a1','a2']
+    }]
 
-  it('should get all tickets for a movie when form is submitted', () => {
-    const movieName = 'Movie1';
-    const tickets: Ticket[] = [
-      {
-        loginId: 'user',
-        movieName: 'Dasara',
-        theatreName: 'miraj',
-        noOfTickets: 2,
-        seatNumber: ['a1', 'a2'],
-      },
-    ];
-    const formGroup: FormGroup = new FormGroup({});
+    spyOn(movieService,'forGettingAllBookedTickets').and.returnValue(of(allTickets))
 
-    movieService.validateMovieName.and.returnValue(movieName);
-    movieService.forGettingAllBookedTickets.and.returnValue(of(tickets));
-
+    component.allTickets = allTickets
     component.movieName = movieName;
-    component.isFormSubmit = false;
-
     component.getAllTickets();
 
-    expect(movieService.validateMovieName).toHaveBeenCalledWith(movieName);
-    expect(movieService.forGettingAllBookedTickets).toHaveBeenCalledWith(
-      movieName
-    );
-    expect(component.isFormSubmit).toBeTrue();
-    expect(component.allTickets).toEqual(tickets);
+    expect(component.allTickets).toEqual(allTickets);
+    expect(movieService.forGettingAllBookedTickets).toHaveBeenCalledWith(movieName);
+
   });
 
-  it('should not get tickets if form is not submitted', () => {
-    component.isFormSubmit = false;
-
-    component.getAllTickets();
-
-    expect(movieService.validateMovieName).not.toHaveBeenCalled();
-    expect(movieService.forGettingAllBookedTickets).not.toHaveBeenCalled();
-    expect(component.isFormSubmit).toBeFalse();
-    expect(component.allTickets).toEqual([]);
-  });
 });

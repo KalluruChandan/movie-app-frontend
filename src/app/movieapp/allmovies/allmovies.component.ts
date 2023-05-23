@@ -45,7 +45,7 @@ export class AllmoviesComponent implements OnInit {
     }
   }
   getStatusColor(status:string):string{
-    if(status === 'Sold Out')return 'red'
+    if(status === 'SOLD OUT')return 'red'
     else return 'green'
   }
 

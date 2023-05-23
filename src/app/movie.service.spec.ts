@@ -9,6 +9,7 @@ import { Ticket } from './movieapp/models/Ticket';
 import { Message } from './movieapp/models/Message';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
+import { Component } from '@angular/core';
 
 describe('MovieService', () => {
   let service: MovieService;
@@ -82,18 +83,7 @@ describe('MovieService', () => {
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient',['get','post','put','delete']);
     service = new MovieService(httpClientSpy);
-    
-    // TestBed.configureTestingModule({
-    //   imports: [HttpClientTestingModule],
-    //   providers: [MovieService]
-    // });
-    // service = TestBed.inject(MovieService);
-    // httpTestingController = TestBed.inject(HttpTestingController);
-  });
-
-  afterEach(() => {
-    // httpTestingController.verify();
-  });
+    });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -230,6 +220,10 @@ describe('MovieService', () => {
       sessionStorage.setItem("loginStatus", "user");
       expect(service.isAuthenticated()).toBeTruthy();
     })
+  })
+
+  it("should set movi name", ()=>{
+    
   })
 
   

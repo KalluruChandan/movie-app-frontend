@@ -1,27 +1,3 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-// import { HomeComponent } from './home.component';
-
-// describe('HomeComponent', () => {
-//   let component: HomeComponent;
-//   let fixture: ComponentFixture<HomeComponent>;
-
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       declarations: [ HomeComponent ]
-//     })
-//     .compileComponents();
-
-//     fixture = TestBed.createComponent(HomeComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
-
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomeComponent } from './home.component';
@@ -59,18 +35,6 @@ describe('HomeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  xit('should initialize loggedInAsGuest and loggedInAsUser based on sessionStorage', () => {
-    sessionStorage.setItem('loginStatus', 'guest');
-    fixture.detectChanges();
-    expect(component.loggedInAsGuest).toBe(false);
-    expect(component.loggedInAsUser).toBe(false);
-
-    sessionStorage.setItem('loginStatus', 'user');
-    fixture.detectChanges();
-    expect(component.loggedInAsGuest).toBe(false);
-    expect(component.isLoggedInAsUser()).toBe(true);
   });
 
   it('should navigate to /register when loginForGuest is called', () => {

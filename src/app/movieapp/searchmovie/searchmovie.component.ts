@@ -69,9 +69,7 @@ export class SearchmovieComponent implements OnInit {
     this.movieService.setMovieTheatre(movieTheatre);
     this.router.navigate(['/bookticket'])
   }
-
   ngOnInit(): void {
-    // console.log(this.movieService.getMovieNameToSearch())
   }
 
 }

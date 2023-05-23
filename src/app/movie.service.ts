@@ -122,10 +122,6 @@ export class MovieService {
   }
 
   public isAuthenticated(): boolean {
-    // const token = JSON.stringify(sessionStorage.getItem('token'));
-    // // Check whether the token is expired and return
-    // // true or false
-    // return !this.jwtHelper.isTokenExpired(token);
     return (
       !!sessionStorage.getItem('token') || !!sessionStorage.getItem('loginStatus')
     );
@@ -137,7 +133,6 @@ export class MovieService {
       arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1).toLowerCase();
     }
     const str2 = arr.join(' ');
-    // console.log(str2);
     return str2;
   }
 }
