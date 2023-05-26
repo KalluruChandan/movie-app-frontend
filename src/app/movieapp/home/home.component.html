@@ -1,60 +1,17 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#" routerLink="/home">
-      <img src="../../../assets/images/favicon-32x32.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-      Movie Booking App
-    </a>
-    <form class="d-flex" #l="ngForm" (ngSubmit)="loginForGuest()" >
-      <button class="btn btn-outline-light" type="submit" [hidden]="!loggedInAsGuest">login</button>
-    </form>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" *ngIf="isLoggedInAsUser()">
-          <a class="nav-link active" aria-current="page" href="#" routerLink="/bookticket">Book Tickets</a>
-        </li>
-        <li class="nav-item"  [hidden]="loggedInAsGuest">
-          <a class="nav-link" href="#"  routerLink="/resetpassword">Reset Password</a>
-        </li>
-        <li class="nav-item dropdown" *ngIf="getUserStatus()">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Admin Only
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#" routerLink="/getbookedtickets">Bookings</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#" routerLink="/updatestatus">Update Status</a></li>
-            <li><a class="dropdown-item" href="#" routerLink="/deletemovie">Delete A Movie</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="d-flex" #f="ngForm" (ngSubmit)="onSubmit()">
-        <input class="form-control me-2" type="search" 
-          placeholder="Search A Movie" 
-          aria-label="Search"
-          name="searchMovie"
-          [(ngModel)]="searchMovie" [hidden]="loggedInAsGuest">
-        <button class="btn btn-outline-light" type="submit" [hidden]="loggedInAsGuest">Search</button>
-      </form>
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item" *ngIf="getStatusForLogout()">
-          <a class="nav-link active" aria-current="page" href="#" (click)="logout()">Log Out</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
- -->
- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#" routerLink="/home">
-      <img src="../../../assets/images/favicon-32x32.png" alt="" routerLink="/home" style="padding-left: 1%;">Movie Booking App</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <img src="../../../assets/images/favicon-32x32.png" alt="" routerLink="/home" style="padding-left: 1%;">Movie
+      Booking App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" routerLink="/home" *ngIf="getStatusForLogout()">Home</a>
+          <a class="nav-link active" aria-current="page" href="#" routerLink="/home"
+            *ngIf="getStatusForLogout()">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" routerLink="/bookticket" *ngIf="isLoggedInAsUser()">Book Tickets</a>
@@ -66,41 +23,24 @@
           <a class="nav-link" href="#" routerLink="/resetpassword" *ngIf="getStatusForLogout()">Reset Password</a>
         </li>
         <li class="nav-item dropdown" *ngIf="getUserStatus()">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Admin Options
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="#" routerLink="/bookings">Bookings</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" href="#" routerLink="/updatestatus">Update Status</a></li>
             <li><a class="dropdown-item" href="#" routerLink="/deletemovie">Delete Movie</a></li>
           </ul>
         </li>
       </ul>
-      <!-- <form class="d-flex" *ngIf="!loggedInAsGuest" (ngSubmit)="onSubmit()" style="padding-right: 1%;">
-        <input class="form-control me-2" type="text" placeholder="Search" name="movieName" [(ngModel)]="movieNameToSearch">
-        <button class="btn btn-outline-light" type="submit">Search</button>
-      </form> -->
-      <button class="btn btn-outline-light" type="submit" *ngIf="getStatusForLogout()" (click)="logout()">Log Out</button>
-      <button class="btn btn-outline-light" type="submit" *ngIf="loggedInAsGuest" (click)="loginForGuest()">Register Now</button>
+      <button class="btn btn-outline-light" type="submit" *ngIf="getStatusForLogout()" (click)="logout()">Log
+        Out</button>
+      <button class="btn btn-outline-light" type="submit" *ngIf="loggedInAsGuest" (click)="loginForGuest()">Register
+        Now</button>
     </div>
   </div>
 </nav>
-
-<!-- <div class="container-lg" *ngIf = "movies.length === 1 && isSearchedForMovie">
-  <div class="row movie-div my-div" *ngFor="let movie of movies">
-      <div class="col-xxl-">
-          <img src="{{getMovieImagePath(movie.movieName)}}" alt="movie.movieName">
-      </div>
-      <div class="col-xxl-3">
-          <h1 class="movie-details">{{movie.movieName}}</h1> <br>
-          <p class="movie-details"><b>{{movie.theatreName}}</b></p><br>
-          <p class="movie-details">{{movie.noOfTicketsAvailable}}</p><br>
-          <p class="movie-details" [ngClass]="movie.ticketsStatus === 'BOOK ASAP' ? 'movie-status-bookasap':'movie-status-soldout'">{{movie.ticketsStatus}}</p><br>
-          <button class="btn btn-primary" *ngIf="isLoggedAsUser()" (click)="booktickets(movie.movieName,movie.theatreName)">Book Now</button>
-    </div>
-  </div>
-</div>
-<div class="container my-div" *ngIf = "movies.length === 0 && isSearchedForMovie" >
-  <h1>{{message}}</h1>
-</div> -->

@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'deletemovie',component:DeletemovieComponent,canActivate:[AuthGuard]},
   {path:'updatestatus',component:UpdatestatusComponent,canActivate:[AuthGuard]},
   {path:'searchmovie',component:SearchmovieComponent,canActivate:[AuthGuard]},
-  {path:'**',component:LoginComponent}
+  {path:'**',component:LoginComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({
